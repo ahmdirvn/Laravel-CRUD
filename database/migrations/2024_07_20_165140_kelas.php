@@ -16,7 +16,11 @@ return new class extends Migration
             Schema::create('kelas', function (Blueprint $table) {
                 $table->id();
                 $table->string('nama_kelas');
+                $table->unsignedBigInteger('guru_id'); // Foreign key ke tabel guru
                 $table->timestamps();
+
+
+                $table->foreign('guru_id')->references('id')->on('guru')->onDelete('cascade'); // Menambahkan foreign key ke tabel guru
             });
         }
     }

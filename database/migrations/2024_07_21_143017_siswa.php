@@ -17,9 +17,12 @@ return new class extends Migration
                 $table->id();
                 $table->string('nama', 255);
                 $table->string('email', 255);
+                $table->unsignedBigInteger('kelas_id'); //foreign key untuk menghubungkan ke tabel kelas
                 $table->string('kelas', 50);
                 $table->string('agama');
                 $table->timestamps();
+
+                $table->foreign('kelas_id')->references('id')->on('kelas')->onDelete('cascade'); //menambahkan foreign key untuk menghubungkan ke tabel kelas
             });
         }
     }

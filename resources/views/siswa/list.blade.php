@@ -62,7 +62,8 @@
     _token: "{{ csrf_token() }}";
     var nama = $("#nama").val();
     var email = $("#email").val();
-    var kelas = $("#kelas").val();
+    var kelas_id = $("#kelas").val(); // Mengambil ID kelas dari dropdown
+    var kelas = $("#kelas option:selected").text(); // Mengambil nama kelas yang terpilih
     var agama = $("#agama").val();
     $.ajax({
       type: "post",
@@ -71,6 +72,7 @@
         _token: "{{ csrf_token() }}",
         nama: nama,
         email: email,
+        kelas_id: kelas_id, // Mengirim ID kelas
         kelas: kelas,
         agama: agama,
       },

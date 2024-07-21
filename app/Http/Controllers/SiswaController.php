@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KelasModel;
 use App\Models\SiswaModel;
 use Illuminate\Http\Request;
 
@@ -26,12 +27,14 @@ class SiswaController extends Controller
             $siswa = new SiswaModel();
             $siswa->nama = $request->nama;
             $siswa->email = $request->email;
+            $siswa->kelas_id = $request->kelas_id; // Ganti dengan kelas_id
             $siswa->kelas = $request->kelas;
             $siswa->agama = $request->agama;
             $siswa->save();
             return redirect('/siswa')->with(['message' => 'Data berhasil disimpan']);
         }
-        return view('siswa.formCreate');
+        $kelas = KelasModel::all(); // Mengambil semua data kelas
+        return view('siswa.formCreate', compact('kelas'));
     }
 
     function update(Request $request){
@@ -44,6 +47,7 @@ class SiswaController extends Controller
             $siswa->nama = $request->nama;
             $siswa->email = $request->email;
             $siswa->kelas = $request->kelas;
+            $siswa->kelas_id = $request->kelas_id; // Ganti dengan kelas_id
             $siswa->agama = $request->agama;
             $siswa->save();
             return redirect('/siswa')->with(['message' => 'Update Data berhasil disimpan']);
