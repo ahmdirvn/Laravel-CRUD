@@ -15,6 +15,7 @@ return new class extends Migration
         if(!Schema::hasTable('guru')){
             Schema::create('guru', function(Blueprint $table){
                 $table->id();
+                $table->string('nip', 255)->unique();
                 $table->string('nama', 255);
                 $table->string('mata_pelajaran', 255);
                 $table->timestamps();

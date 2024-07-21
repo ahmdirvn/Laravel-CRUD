@@ -16,6 +16,7 @@ return new class extends Migration
             Schema::create('siswa', function (Blueprint $table){
                 $table->id();
                 $table->string('nama', 255);
+                $table->string('nis', 255)->unique();
                 $table->string('email', 255);
                 $table->unsignedBigInteger('kelas_id'); //foreign key untuk menghubungkan ke tabel kelas
                 $table->string('agama');

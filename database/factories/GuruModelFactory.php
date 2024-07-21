@@ -14,13 +14,12 @@ class GuruModelFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function definition()
     {
         return [
-            //
-            'nama' => $this->faker->name(),
-            'mata_pelajaran' => $this->faker->word(),
-            'kelas' => $this->faker->word(),
+            'nip' => $this->faker->unique()->numerify('############'),
+            'nama' => $this->faker->name,
+            'mata_pelajaran' => $this->faker->word,
         ];
     }
 }

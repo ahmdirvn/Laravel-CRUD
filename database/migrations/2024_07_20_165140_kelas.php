@@ -15,7 +15,7 @@ return new class extends Migration
         if(!Schema::hasTable('kelas')){
             Schema::create('kelas', function (Blueprint $table) {
                 $table->id();
-                $table->string('nama_kelas');
+                $table->string('nama_kelas')->unique();
                 $table->unsignedBigInteger('guru_id'); // Foreign key ke tabel guru
                 $table->timestamps();
 
