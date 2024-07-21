@@ -9,10 +9,15 @@ class GuruController extends Controller
 {
     //
     function index(){
+        return view('guru.list');
+    }
+
+    function read(){
+
         $data = array(
             "gurus" => GuruModel::all()
         );
-        return view('guru.list', $data);
+        return view('guru.read', $data);
     }
 
     function insert(Request $request){
@@ -25,13 +30,13 @@ class GuruController extends Controller
             $guru->save();
             return redirect('/guru')->with(['message' => 'Data berhasil disimpan']);
         }
-        return view('guru.form');
+        return view('guru.formCreate');
     }
 
     function update(Request $request){
         $guru = GuruModel::find($request->id);
         $data = array(
-            "siswa" => $guru
+            "guru" => $guru
         );
 
         if($request-> isMethod('post')){
@@ -41,7 +46,7 @@ class GuruController extends Controller
             $guru->save();
             return redirect('/guru')->with(['message' => 'Update Data berhasil disimpan']);
         }
-        return view('guru.form', $data);
+        return view('guru.formEdit', $data);
     }
 
     function delete(Request $request){

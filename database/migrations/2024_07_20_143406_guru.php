@@ -12,13 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schema::create('guru', function(Blueprint $table){
-            $table->id();
-            $table->string('nama', 255);
-            $table->string('mata_pelajaran', 255);
-            $table->string('kelas', 255);
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('guru')){
+            Schema::create('guru', function(Blueprint $table){
+                $table->id();
+                $table->string('nama', 255);
+                $table->string('mata_pelajaran', 255);
+                $table->string('kelas', 255);
+                $table->timestamps();
+            });
+        }
+
+        
     }
 
     /**
@@ -27,5 +31,6 @@ return new class extends Migration
     public function down(): void
     {
         //
+        Schema::dropIfExists('guru');
     }
 };

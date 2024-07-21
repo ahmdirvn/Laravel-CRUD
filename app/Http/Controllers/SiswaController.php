@@ -9,11 +9,15 @@ class SiswaController extends Controller
 {
     //
     function index(){
+        return view('siswa.list');
+    }
+
+    function read(){
 
         $data = array(
             "siswas" => SiswaModel::all()
         );
-        return view('siswa.list', $data);
+        return view('siswa.read', $data);
     }
 
     function insert(Request $request){
@@ -27,7 +31,7 @@ class SiswaController extends Controller
             $siswa->save();
             return redirect('/siswa')->with(['message' => 'Data berhasil disimpan']);
         }
-        return view('siswa.form');
+        return view('siswa.formCreate');
     }
 
     function update(Request $request){
@@ -44,7 +48,7 @@ class SiswaController extends Controller
             $siswa->save();
             return redirect('/siswa')->with(['message' => 'Update Data berhasil disimpan']);
         }
-        return view('siswa.form', $data);
+        return view('siswa.formEdit', $data);
     }
 
     function delete(Request $request){
