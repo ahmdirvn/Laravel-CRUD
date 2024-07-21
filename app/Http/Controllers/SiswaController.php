@@ -18,7 +18,8 @@ class SiswaController extends Controller
         $data = array(
             "siswas" => SiswaModel::all()
         );
-        return view('siswa.read', $data);
+        $kelas = KelasModel::all(); // Mengambil semua data kelas
+        return view('siswa.read', $data, compact('kelas'));
     }
 
     function insert(Request $request){
@@ -28,7 +29,6 @@ class SiswaController extends Controller
             $siswa->nama = $request->nama;
             $siswa->email = $request->email;
             $siswa->kelas_id = $request->kelas_id; // Ganti dengan kelas_id
-            $siswa->kelas = $request->kelas;
             $siswa->agama = $request->agama;
             $siswa->save();
             return redirect('/siswa')->with(['message' => 'Data berhasil disimpan']);
@@ -46,13 +46,13 @@ class SiswaController extends Controller
         if($request-> isMethod('post')){
             $siswa->nama = $request->nama;
             $siswa->email = $request->email;
-            $siswa->kelas = $request->kelas;
             $siswa->kelas_id = $request->kelas_id; // Ganti dengan kelas_id
             $siswa->agama = $request->agama;
             $siswa->save();
             return redirect('/siswa')->with(['message' => 'Update Data berhasil disimpan']);
         }
-        return view('siswa.formEdit', $data);
+        $kelas = KelasModel::all(); // Mengambil semua data kelas
+        return view('siswa.formEdit', $data, compact('kelas'));
     }
 
     function delete(Request $request){

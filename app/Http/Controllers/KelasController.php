@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GuruModel;
 use App\Models\KelasModel;
 use Illuminate\Http\Request;
 
@@ -16,17 +17,20 @@ class KelasController extends Controller
         $data = array(
             "kelass" => KelasModel::all()
         );
-        return view('kelas.read', $data);
+        $guru = GuruModel::all(); // Mengambil semua data guru
+        return view('kelas.read', $data, compact('guru')); //compact digunakan untuk mengirim data guru ke view read
     }
 
     function insert(Request $request){
         if($request->isMethod('post')){
             $kelas = new KelasModel();
             $kelas->nama_kelas = $request->nama_kelas;
+            $kelas->guru_id = $request->guru_id; //meminta guru_id
             $kelas->save();
             return redirect('/kelas')->with(['message' => 'Data berhasil disimpan']);
         }
-    return view('kelas.formCreate');
+        $guru = GuruModel::all(); // Mengambil semua data guru
+        return view('kelas.formCreate', compact('guru')); //compact digunakan untuk mengirim data guru ke view formCreate
     }
 
     function update(Request $request){
@@ -37,10 +41,12 @@ class KelasController extends Controller
         if($request->isMethod('post')){
             $kelas = KelasModel::find($request->id);
             $kelas->nama_kelas = $request->nama_kelas;
+            $kelas->guru_id = $request->guru_id; //meminta guru_id
             $kelas->save();
             return redirect('/kelas')->with(['message' => 'Data kelas berhasil diedit']);
         }
-        return view('kelas.formEdit', $data);
+        $guru = GuruModel::all(); // Mengambil semua data guru
+        return view('kelas.formEdit', $data, compact('guru')); //compact digunakan untuk mengirim data guru ke view formEdit
     }
 
     function delete(Request $request){

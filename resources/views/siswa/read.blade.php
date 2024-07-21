@@ -13,7 +13,9 @@
             <tr>
                 <td>{{ $siswa->nama }}</td>
                 <td>{{ $siswa->email }}</td>
-                <td>{{ $siswa->kelas }}</td>
+                @foreach ($kelas as $k )    
+                <td>{{ $k->nama_kelas }}</td>
+                @endforeach
                 <td>{{ $siswa->agama }}</td>
                 <td>
                     <button class="btn btn-warning" onclick="showSiswa({{ $siswa->id }})">Edit</button>

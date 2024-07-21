@@ -17,7 +17,6 @@ return new class extends Migration
                 $table->id();
                 $table->string('nama', 255);
                 $table->string('mata_pelajaran', 255);
-                $table->string('kelas', 255);
                 $table->timestamps();
             });
         }

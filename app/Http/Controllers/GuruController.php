@@ -26,7 +26,6 @@ class GuruController extends Controller
             $guru = new GuruModel();
             $guru->nama = $request->nama;
             $guru->mata_pelajaran = $request->mata_pelajaran;
-            $guru->kelas = $request->kelas;
             $guru->save();
             return redirect('/guru')->with(['message' => 'Data berhasil disimpan']);
         }
@@ -42,7 +41,6 @@ class GuruController extends Controller
         if($request-> isMethod('post')){
             $guru->nama = $request->nama;
             $guru->mata_pelajaran = $request->mata_pelajaran;
-            $guru->kelas = $request->kelas;
             $guru->save();
             return redirect('/guru')->with(['message' => 'Update Data berhasil disimpan']);
         }

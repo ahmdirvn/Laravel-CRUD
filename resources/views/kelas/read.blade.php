@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th>Nama Kelas</th>
+            <th>Wali Kelas</th>
             <th> Action </th>
         </tr>
     </thead>
@@ -9,6 +10,9 @@
         @foreach ($kelass as $kelas)
             <tr>
                 <td>{{ $kelas->nama_kelas }}</td>
+                @foreach ($guru as $g )   
+                <td>{{ $g->nama }}</td>
+                @endforeach
                 <td>
                     <button class="btn btn-warning" onclick="showKelas({{ $kelas->id }})">Edit</button>
                     <button class="btn btn-danger" onclick="deleteKelas({{ $kelas->id }})">Delete</button>

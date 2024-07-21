@@ -61,7 +61,6 @@
     _token: "{{ csrf_token() }}";
     var nama = $("#nama").val();
     var mata_pelajaran = $("#mata_pelajaran").val();
-    var kelas = $("#kelas").val();
     $.ajax({
       type: "post",
       url: "{{ url('guru/insert') }}",
@@ -69,7 +68,6 @@
         _token: "{{ csrf_token() }}",
         nama: nama,
         mata_pelajaran: mata_pelajaran,
-        kelas: kelas,
       },
       success: function (data) {
         $(".btn-close").click();
@@ -91,7 +89,6 @@
   function updateGuru(id) {
     var nama = $("#nama").val();
     var mata_pelajaran = $("#mata_pelajaran").val();
-    var kelas = $("#kelas").val();
     $.ajax({
       type: "post",
       url: "{{ url('guru/update') }}/" + id,
@@ -99,7 +96,6 @@
         _token: "{{ csrf_token() }}",
         nama: nama,
         mata_pelajaran: mata_pelajaran,
-        kelas: kelas,
       },
       success: function (data) {
         $(".btn-close").click();

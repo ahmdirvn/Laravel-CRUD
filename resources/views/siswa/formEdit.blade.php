@@ -10,7 +10,14 @@
     </div>
     <div class="form-group mb-2">
         <label for="kelas"> Kelas </label>
-        <input type="text" name="kelas" id="kelas" class="form-control" value="{{ (isset($siswa)) ? $siswa->kelas : '' }}">
+        <select name="kelas_id" id="kelas" class="form-control" required>
+            <option value="">Pilih Kelas</option>
+            @foreach($kelas as $k)
+                <option value="{{ $k->id }}" {{ isset($siswa) && $siswa->kelas_id == $k->id ? 'selected' : '' }}>
+                    {{ $k->nama_kelas }}
+                </option>
+            @endforeach
+        </select>
     </div>
     <div class="form-group mb-2">
         <label for="nama"> Agama </label>

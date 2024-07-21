@@ -60,12 +60,14 @@
   function insertKelas() {
     _token: "{{ csrf_token() }}";
     var nama_kelas = $("#nama_kelas").val();
+    var guru_id = $("#wali_kelas").val();
     $.ajax({
       type: "post",
       url: "{{ url('kelas/insert') }}",
       data: {
         _token: "{{ csrf_token() }}",
         nama_kelas: nama_kelas,
+        guru_id: guru_id,
       },
       success: function (data) {
         $(".btn-close").click();
@@ -86,12 +88,14 @@
   // untuk proses update kelas menggunakan ajax
   function updateKelas(id) {
     var nama_kelas = $("#nama_kelas").val();
+    var guru_id = $("#wali_kelas").val();
     $.ajax({
       type: "post",
       url: "{{ url('kelas/update') }}/" + id,
       data: {
         _token: "{{ csrf_token() }}",
         nama_kelas: nama_kelas,
+        guru_id: guru_id,
       },
       success: function (data) {
         $(".btn-close").click();

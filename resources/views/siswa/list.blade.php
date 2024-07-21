@@ -63,7 +63,6 @@
     var nama = $("#nama").val();
     var email = $("#email").val();
     var kelas_id = $("#kelas").val(); // Mengambil ID kelas dari dropdown
-    var kelas = $("#kelas option:selected").text(); // Mengambil nama kelas yang terpilih
     var agama = $("#agama").val();
     $.ajax({
       type: "post",
@@ -73,7 +72,6 @@
         nama: nama,
         email: email,
         kelas_id: kelas_id, // Mengirim ID kelas
-        kelas: kelas,
         agama: agama,
       },
       success: function (data) {
@@ -96,7 +94,7 @@
   function updateSiswa(id) {
     var nama = $("#nama").val();
     var email = $("#email").val();
-    var kelas = $("#kelas").val();
+    var kelas_id = $("#kelas").val(); // Mengambil ID kelas dari dropdown
     var agama = $("#agama").val();
     $.ajax({
       type: "post",
@@ -105,7 +103,7 @@
         _token: "{{ csrf_token() }}",
         nama: nama,
         email: email,
-        kelas: kelas,
+        kelas_id: kelas_id, // Mengirim ID kelas
         agama: agama,
       },
       success: function (data) {
