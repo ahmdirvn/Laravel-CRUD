@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th>Nama</th>
+            <th>NIP</th>
             <th>Mata Pelajaran</th>
             <th>Action</th>
         </tr>
@@ -10,6 +11,7 @@
         @foreach ($gurus as $guru)
             <tr>
                 <td>{{ $guru->nama }}</td>
+                <td>{{ $guru->nip }}</td>
                 <td>{{ $guru->mata_pelajaran }}</td>
                 <td>
                     <button class="btn btn-warning" onclick="showGuru({{ $guru->id }})">Edit</button>

@@ -60,6 +60,7 @@
   function insertGuru() {
     _token: "{{ csrf_token() }}";
     var nama = $("#nama").val();
+    var nip = $("#nip").val();
     var mata_pelajaran = $("#mata_pelajaran").val();
     $.ajax({
       type: "post",
@@ -67,6 +68,7 @@
       data: {
         _token: "{{ csrf_token() }}",
         nama: nama,
+        nip: nip,
         mata_pelajaran: mata_pelajaran,
       },
       success: function (data) {
@@ -88,6 +90,7 @@
   // untuk proses update guru menggunakan ajax
   function updateGuru(id) {
     var nama = $("#nama").val();
+    var nip = $("#nip").val();
     var mata_pelajaran = $("#mata_pelajaran").val();
     $.ajax({
       type: "post",
@@ -95,6 +98,7 @@
       data: {
         _token: "{{ csrf_token() }}",
         nama: nama,
+        nip: nip,
         mata_pelajaran: mata_pelajaran,
       },
       success: function (data) {
