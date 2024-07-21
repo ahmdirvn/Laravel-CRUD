@@ -27,6 +27,7 @@ class SiswaController extends Controller
         if($request-> isMethod('post')){
             $siswa = new SiswaModel();
             $siswa->nama = $request->nama;
+            $siswa->nis = $request->nis;
             $siswa->email = $request->email;
             $siswa->kelas_id = $request->kelas_id; // Ganti dengan kelas_id
             $siswa->agama = $request->agama;
@@ -45,6 +46,7 @@ class SiswaController extends Controller
 
         if($request-> isMethod('post')){
             $siswa->nama = $request->nama;
+            $siswa->nis = $request->nis;
             $siswa->email = $request->email;
             $siswa->kelas_id = $request->kelas_id; // Ganti dengan kelas_id
             $siswa->agama = $request->agama;

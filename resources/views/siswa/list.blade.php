@@ -61,6 +61,7 @@
   function insertSiswa() {
     _token: "{{ csrf_token() }}";
     var nama = $("#nama").val();
+    var nis = $("#nis").val();
     var email = $("#email").val();
     var kelas_id = $("#kelas").val(); // Mengambil ID kelas dari dropdown
     var agama = $("#agama").val();
@@ -70,6 +71,7 @@
       data: {
         _token: "{{ csrf_token() }}",
         nama: nama,
+        nis: nis,
         email: email,
         kelas_id: kelas_id, // Mengirim ID kelas
         agama: agama,
@@ -93,6 +95,7 @@
   // untuk proses update siswa menggunakan ajax
   function updateSiswa(id) {
     var nama = $("#nama").val();
+    var nis = $("#nis").val();
     var email = $("#email").val();
     var kelas_id = $("#kelas").val(); // Mengambil ID kelas dari dropdown
     var agama = $("#agama").val();
@@ -102,6 +105,7 @@
       data: {
         _token: "{{ csrf_token() }}",
         nama: nama,
+        nis: nis,
         email: email,
         kelas_id: kelas_id, // Mengirim ID kelas
         agama: agama,

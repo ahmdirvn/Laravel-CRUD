@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th>Nama</th>
+            <th>NIS</th>
             <th>Email</th>
             <th>Kelas</th>
             <th>Agama</th>
@@ -12,6 +13,7 @@
         @foreach ($siswas as $siswa)
             <tr>
                 <td>{{ $siswa->nama }}</td>
+                <td>{{ $siswa->nis }}</td>
                 <td>{{ $siswa->email }}</td>
                 <td>{{ $siswa->kelas ? $siswa->kelas->nama_kelas : 'Belum ada kelas' }}</td>
                 <td>{{ $siswa->agama }}</td>

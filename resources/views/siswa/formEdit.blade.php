@@ -5,6 +5,10 @@
         <input type="text" name="nama" id="nama" class="form-control" value="{{ (isset($siswa)) ? $siswa->nama : '' }}">
     </div>
     <div class="form-group mb-2">
+        <label for="nis"> NIS </label>
+        <input type="number" name="nis" id="nis" class="form-control" value="{{ isset($siswa) ? $siswa->nis : '' }}">
+    </div>
+    <div class="form-group mb-2">
         <label for="email"> Email </label>
         <input type="email" name="email" id="email" class="form-control" value="{{ (isset($siswa)) ? $siswa->email : '' }}">
     </div>
