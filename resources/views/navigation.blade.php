@@ -27,9 +27,6 @@
                 <a class="nav-link" href="{{ url('/about') }}">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="{{ url('/siswa') }}">Siswa</a>
               </li>
               <li class="nav-item">
@@ -37,6 +34,9 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url('/kelas') }}">Kelas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('/laporan') }}">Laporan</a>
               </li>
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">

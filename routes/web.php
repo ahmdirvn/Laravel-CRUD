@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\AboutController;
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +29,6 @@ Route::get('/actionlogout', [LoginController::class, 'actionlogout'])->name('act
 
 Route::get('/home',[HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('/about',[AboutController::class, 'index']);
-Route::get('/contact',[ContactController::class, 'index']);
 
 Route::get('/siswa',[SiswaController::class, 'index']);
 Route::get('/siswa/read',[SiswaController::class, 'read']);
@@ -51,3 +50,7 @@ Route::match(['get','post'], 'kelas/insert', [KelasController::class, 'insert'])
 Route::match(['get','post'], 'kelas/update/{id}', [KelasController::class, 'update']);
 Route::match(['get','post'], 'kelas/delete/{id}', [KelasController::class, 'delete']);
 Route::get('kelas/data_table',[KelasController::class, 'data_table'])->name('kelas.data_table');
+
+Route::get('/laporan',[LaporanController::class, 'index']);
+Route::get('/laporan/read',[LaporanController::class, 'read']);
+Route::get('laporan/data_table',[LaporanController::class, 'data_table'])->name('laporan.data_table');
