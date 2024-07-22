@@ -18,7 +18,6 @@
             <button class="btn btn-primary" onclick="createSiswa()"> + Tambah Siswa </button>
         </div>
         <div id="read" class="mt-3"></div>
-        
     </div>
 </div>
   <!-- Modal -->
@@ -40,7 +39,7 @@
   $(document).ready(function () {
     readSiswa();
   });
-  
+
   // read data siswa dari database
   function readSiswa() {
     $.get("{{ url('siswa/read') }}", {}, function (data, status) {
@@ -133,6 +132,6 @@
       },
     });
   }
-  
+
 </Script>
 @endsection

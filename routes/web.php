@@ -34,8 +34,9 @@ Route::get('/contact',[ContactController::class, 'index']);
 Route::get('/siswa',[SiswaController::class, 'index']);
 Route::get('/siswa/read',[SiswaController::class, 'read']);
 Route::match(['get','post'],'/siswa/insert',[SiswaController::class, 'insert']);
-Route::match(['get','post'],'/siswa/update/{id}',[SiswaController::class, 'update']);
-Route::get('siswa/delete/{id}',[SiswaController::class, 'delete']);
+Route::match(['get','post'],'/siswa/update/{id}',[SiswaController::class, 'update'])->name('siswa.update');
+Route::get('siswa/delete/{id}',[SiswaController::class, 'delete'])->name('siswa.delete');
+Route::get('siswa/data_table',[SiswaController::class, 'data_table'])->name('siswa.data_table');
 
 Route::get('/guru', [GuruController::class, 'index']);
 Route::get('/guru/read', [GuruController::class, 'read']);
