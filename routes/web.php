@@ -43,6 +43,7 @@ Route::get('/guru/read', [GuruController::class, 'read']);
 Route::match(['get','post'],'/guru/insert',[GuruController::class, 'insert']);
 Route::match(['get','post'],'/guru/update/{id}',[GuruController::class, 'update']);
 Route::match(['get','post'],'/guru/delete/{id}',[GuruController::class, 'delete']);
+Route::get('guru/data_table',[GuruController::class, 'data_table'])->name('guru.data_table');
 
 Route::get('/kelas', [KelasController::class, 'index']);
 Route::get('/kelas/read', [KelasController::class, 'read']);

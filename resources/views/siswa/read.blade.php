@@ -17,8 +17,8 @@
             <th>Nama</th>
             <th>NIS</th>
             <th>Email</th>
-            <th>Kelas</th>
             <th>Agama</th>
+            <th>Kelas</th>
             <th>Action</th>
         </tr>
     </thead>
