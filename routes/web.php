@@ -50,3 +50,4 @@ Route::get('/kelas/read', [KelasController::class, 'read']);
 Route::match(['get','post'], 'kelas/insert', [KelasController::class, 'insert']);
 Route::match(['get','post'], 'kelas/update/{id}', [KelasController::class, 'update']);
 Route::match(['get','post'], 'kelas/delete/{id}', [KelasController::class, 'delete']);
+Route::get('kelas/data_table',[KelasController::class, 'data_table'])->name('kelas.data_table');

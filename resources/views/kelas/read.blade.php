@@ -1,4 +1,4 @@
-<table class="table" style="margin-top: 10px">
+<table class="table table-striped display" id="kelasTable" style="margin-top: 10px">
     <thead>
         <tr>
             <th>Nama Kelas</th>
@@ -7,15 +7,22 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($kelass as $kelas)
-            <tr>
-                <td>{{ $kelas->nama_kelas }}</td>
-                <td>{{ $kelas->guru ? $kelas->guru->nama : 'Belum ada kelas' }}</td>
-                <td>
-                    <button class="btn btn-warning" onclick="showKelas({{ $kelas->id }})">Edit</button>
-                    <button class="btn btn-danger" onclick="deleteKelas({{ $kelas->id }})">Delete</button>
-                </td>
-            </tr>
-        @endforeach
     </tbody>
 </table>
+
+<Script>
+    $(document).ready(function () {
+        var table = $('#kelasTable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: '{{ route('kelas.data_table') }}',
+            },
+            columns: [
+                { data: 'nama_kelas', name: 'nama_kelas' }, 
+                { data: 'wali_kelas', name: 'wali_kelas' },
+                { data: 'action', name: 'action', orderable: false, searchable: false }
+            ]
+        });
+    });
+</script>

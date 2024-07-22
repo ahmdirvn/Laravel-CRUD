@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GuruModel;
 use App\Models\KelasModel;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class KelasController extends Controller
 {
@@ -53,5 +54,30 @@ class KelasController extends Controller
         $kelas = KelasModel::find($request->id);
         $kelas->delete();
         return redirect('/kelas')->with(['message' => 'Data kelas berhasil dihapus']);
+    }
+
+    function data_table(){
+        $query = KelasModel::with('guru'); // Eager loading the 'guru' relationship
+    
+        return DataTables::of($query)
+            ->addColumn('wali_kelas', function($row){
+                // Check if 'guru' relationship is null
+                if (is_null($row->guru)) {
+                    return 'belum menjadi wali kelas';
+                }
+                return $row->guru->nama; // Access 'nama' from the 'guru' relationship
+            })
+            ->addColumn('action', function($row){
+                return '<button class="btn btn-warning" onclick="showKelas(' . $row->id . ')">Edit</button>
+                        <button class="btn btn-danger" onclick="deleteKelas(' . $row->id . ')">Delete</button>';
+            })
+
+            // supaya filter search menggunakan nama wali kelas bisa dilakukan
+            ->filterColumn('wali_kelas', function($query, $keyword) {
+                $query->whereHas('guru', function($q) use ($keyword) {
+                    $q->where('nama', 'like', "%{$keyword}%");
+                });
+            })
+            ->make(true); // Return data as JSON
     }
 }
